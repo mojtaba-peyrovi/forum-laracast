@@ -1,0 +1,15 @@
+#threads-header h2{
+    font-size: 45px;
+    color: white;
+    font-family: Helvetica;
+
+}
+/* show single post  */
+#show-meta-data{
+    font-size: 15px;
+
+}
+#show-meta-data a{
+    color: orange;
+    text-decoration: underline;
+}
