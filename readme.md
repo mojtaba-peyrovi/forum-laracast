@@ -7,6 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## What I learned
+part20: from 56 queries down to 2.
+new tool Laravel Debuger.
+withCount() function can be added to the end of relationship methods in models so that reduces the number of queries.
+part21: we can add a global scope to the model. it means we can have a protected $with method and then add owner. then for each reply it fetches the owner.
+this class: withoutGlobalScopes() will show the query result without having any global filters we implemented in model.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
@@ -50,14 +57,8 @@ We would like to extend our thanks to the following sponsors for helping fund on
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## What I learned
-What I learned today in Laravel:
-part18: A user can favorite replies.
-get_class($reply)  ---> can take the class name for the variable $reply.
-when we import DB instead of namespacing it on the top we can use \\DB it will be automatiaclly found.
- polymorphic relationship: for example when a user can comment on two models (a post and a video)
-in migration Unique data type would have a record to be unique.
-par19: added favorites button to threads.reply view.
+
+
 
 ## Security Vulnerabilities
 

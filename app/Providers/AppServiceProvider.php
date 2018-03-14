@@ -17,7 +17,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         \View::composer(['threads.create','layouts.app'], function($view){
-            $view->with('channels', \App\Channel::all());  // instead of an array of views we can simply add '*' to pass this data to all views.
+          $channels = \Cache::rememberForever('channels', function(){
+            return Channel::all();
+          });
+            $view->with('channels', $channels);  // instead of an array of views we can simply add '*' to pass this data to all views.
         });
         // or easiest way is:
 
@@ -33,6 +36,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        if($this->app->isLocal()){
+          $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+        }
+
     }
 }
