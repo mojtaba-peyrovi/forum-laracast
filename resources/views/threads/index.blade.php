@@ -14,7 +14,7 @@
             @foreach ($threads as $thread)
                 <div class="card my-2">
                     <div class="card-header text-white" style="background-color:#00cc99;">
-                        <span>{{ $thread->owner['name'] }}</span>
+                        <a href="/profiles/{{$thread->owner->name  }}" class="text-dark">{{ $thread->owner['name'] }}</a>
                         <span class="float-right">said: {{ $thread->created_at->diffForHumans() }}</span>
                     </div>
                     <div class="card-body">

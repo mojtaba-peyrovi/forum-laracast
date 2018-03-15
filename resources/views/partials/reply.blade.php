@@ -1,7 +1,7 @@
 <div class="card mb-2">
     <div class="card-body bg-light">
     <div class="card-title text-success">
-            <a href="#">{{ $reply->owner->name }}</a>
+            <a href="/replies/{{ $reply->owner->name }}">{{ $reply->owner->name }}</a>
         Said: {{ $reply->created_at->diffForHumans() }}
         <div class="float-right">
           <form method="POST" action="/replies/{{ $reply->id }}/favorites">
