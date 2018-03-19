@@ -8,11 +8,42 @@
 </p>
 
 ## What I learned
-part20: from 56 queries down to 2.
-new tool Laravel Debuger.
-withCount() function can be added to the end of relationship methods in models so that reduces the number of queries.
-part21: we can add a global scope to the model. it means we can have a protected $with method and then add owner. then for each reply it fetches the owner.
-this class: withoutGlobalScopes() will show the query result without having any global filters we implemented in model.
+
+part23----------------------------
+
+deleting a thread or D in crud is so easy we just have to say $thread->delete( );
+dont forget to pass the variables (Thread $thread) in destroy method.
+Model events: we can add a boot method to the model and have global rules for example if we want all replies of a thread to be deleted we can add it there and no need to have redundant delete function for deleting the thread and the replies.
+in case of delete request with forms we can stick to post but inside the form we can say: {{ mehtod_field('DELETE') }}
+
+part24 ----------------------------
+an issue is when we delete all threads belonging to a channel, the channel is still in the dropdown.
+we can use @forelse to fetch all threads. and @empty we can have a <P>there is no records at the moment </p>
+this is the template for forelse:
+
+@forelse($users as $user)
+    <li>{{ $user->name }}</li>
+@empty
+    <p>No users</p>
+@endforelse
+
+for having a policy for a specific model we can make a policy. for this example Thread model has a policy that the authenticated user should be the same as the profileUser. we can make by php artisan.
+and its under App/Policy.
+then we need to go to AuthServiceProvider.php and add this: 'App\Thread' => 'App\Policies\ThreadPolicy', to policies method.
+for the user being not able to even see the delete button we can use @can   and @endcan  in blade.
+in the policy there is a method called 'before'. we can use that to specify who is the admin. but just saying:
+  public function before($user){
+        if ($user->name === 'Moji'){
+          return true;
+        }
+    }
+or we can go to authseviceprovider.php and add this method; (using Gate class)
+Gate::before(function ($user)) {
+          if ($user->name == "moji") {
+            return true;
+          }
+        }
+
 
 ## About Laravel
 

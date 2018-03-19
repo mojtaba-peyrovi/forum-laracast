@@ -11,7 +11,7 @@
                 </div>
             @endif
 
-            @foreach ($threads as $thread)
+            @forelse ($threads as $thread)
                 <div class="card my-2">
                     <div class="card-header text-white" style="background-color:#00cc99;">
                         <a href="/profiles/{{$thread->owner->name  }}" class="text-dark">{{ $thread->owner['name'] }}</a>
@@ -34,7 +34,12 @@
                         </article>
                     </div>
                 </div>
-            @endforeach
+              @empty
+                <div class="col-md-8 offset-md-2 bg-info text-white text-center">
+                  Oops!!! There is no record for this channel at the moment.
+                </div>
+
+            @endforelse
 
         </div>
     </div>

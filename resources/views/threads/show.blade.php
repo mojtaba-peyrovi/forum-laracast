@@ -7,7 +7,15 @@
             <div class="card">
                 <div class="card-header bg-warning">
                     {{ $thread->title}}
-                    <span class="float-right"><strong>Posted:</strong> {{ $thread->created_at->diffForHumans() }}
+                    <span class="float-right">
+                      <strong>Posted:</strong> {{ $thread->created_at->diffForHumans() }}
+                        @can ('update', $thread)
+                          <form method="post" action="{{ $thread->path() }}" class="float-right ml-3">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE')}}
+                            <button type="submit" class="btn btn-link btn-sm bg-danger text-white">Delete</button>
+                          </form>
+                        @endcan
                     </span>
                 </div>
 
